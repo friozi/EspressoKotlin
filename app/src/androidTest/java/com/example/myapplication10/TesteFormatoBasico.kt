@@ -30,8 +30,10 @@ class TesteFormatoBasico {
         closeSoftKeyboard()
         onView(withId(R.id.btn_login)).perform(click())
         onView(withText("Logado com Sucesso")).check(matches(isDisplayed()))
-
-
+    }
+    @Test
+    fun testefalha() {
+        onView(withText("Bom dia")).check(matches(isDisplayed()))
 
     }
 }
