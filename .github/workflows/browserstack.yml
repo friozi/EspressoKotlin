@@ -49,11 +49,15 @@ jobs:
           RESPONSE=$(curl -u "${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESS_KEY }}" \
           -X POST "https://api-cloud.browserstack.com/app-automate/espresso/v2/test-suite" \
           -F "file=@app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk")
+          echo "Full Test Upload Response: $RESPONSE"
           TEST_URL=$(echo $RESPONSE | jq -r '.test_url')
+          echo "Extracted TEST_URL: $TEST_URL"
           echo "TEST_URL=$TEST_URL" >> $GITHUB_OUTPUT
 
       - name: Execute Espresso Tests on BrowserStack
         run: |
+          echo "Using APP_URL: ${{ steps.upload_app.outputs.APP_URL }}"
+          echo "Using TEST_URL: ${{ steps.upload_test.outputs.TEST_URL }}"
           RESPONSE=$(curl -u "${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESS_KEY }}" \
           -X POST "https://api-cloud.browserstack.com/app-automate/espresso/v2/build" \
           -d "{\"app\": \"${{ steps.upload_app.outputs.APP_URL }}\", \"testSuite\": \"${{ steps.upload_test.outputs.TEST_URL }}\", \"devices\": [\"Samsung Galaxy S23-13.0\"]}" \
