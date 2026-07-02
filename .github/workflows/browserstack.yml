@@ -50,7 +50,8 @@ jobs:
           -X POST "https://api-cloud.browserstack.com/app-automate/espresso/v2/test-suite" \
           -F "file=@app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk")
           echo "Full Test Upload Response: $RESPONSE"
-          TEST_URL=$(echo $RESPONSE | jq -r '.test_url')
+          # O BrowserStack Espresso V2 usa 'test_suite_url' em vez de 'test_url'
+          TEST_URL=$(echo $RESPONSE | jq -r '.test_suite_url')
           echo "Extracted TEST_URL: $TEST_URL"
           echo "TEST_URL=$TEST_URL" >> $GITHUB_OUTPUT
 
