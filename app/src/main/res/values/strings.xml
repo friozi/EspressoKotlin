@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">My Application10</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="login_title">Bem-vindo</string>
+    <string name="login_subtitle">Faça login para continuar</string>
+    <string name="label_username">Usuário</string>
+    <string name="label_password">Senha</string>
+    <string name="btn_login">Entrar</string>
+    <string name="forgot_password">Esqueceu a senha?</string>
+    <string name="no_account">Não tem uma conta? Cadastre-se</string>
+    <string name="login_success">Logado com Sucesso</string>
+
+    <string name="lorem_ipsum">
+    </string>
+</resources>
